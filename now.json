@@ -1,0 +1,30 @@
+{
+    "version": 2,
+    "env": {
+        "MYSQL_HOST": "remotemysql.com"
+    },
+    "builds": [
+        {
+            "src": "api/api.js",
+            "use": "@now/node"
+        },
+        {
+            "src": "posts/posts.js",
+            "use": "@now/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/auth(.*)",
+            "dest": "/api/api.js"
+        },
+        {
+            "src": "/api/user(.*)",
+            "dest": "/api/api.js"
+        },
+        {
+            "src": "/api/post(.*)",
+            "dest": "/posts/posts.js"
+        }
+    ]
+}
